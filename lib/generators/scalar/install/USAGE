@@ -1,0 +1,11 @@
+Description:
+  Installs Scalar, modern open-source developer experience platform for your APIs
+
+Example:
+  bin/rails generate scalar:install
+
+This will update:
+  config/routes.rb
+
+This will create:
+  config/initializers/scalar.rb

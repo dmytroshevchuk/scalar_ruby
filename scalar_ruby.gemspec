@@ -19,5 +19,5 @@ Gem::Specification.new do |spec|
   spec.files = Dir['{lib}/**/*', 'Rakefile', 'README.md']
   spec.require_paths = ['lib']
 
-  spec.required_ruby_version = '>= 2.5.5'
+  spec.required_ruby_version = '>= 3.0', '< 3.4'
 end

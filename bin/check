@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+set -e  # Exit immediately if a command exits with a non-zero status
+set -o pipefail  # Fail if any part of a pipeline fails
+
+# Run bundle audit (checks for vulnerabilities in gem dependencies)
+echo "🔍 [ bin/check ] Analyzing Ruby gems for security vulnerabilities..."
+bundle exec bundle-audit check --update || { echo "❌ [ bin/check ] Bundle audit failed"; exit 1; }
+
+# Run tests
+echo "🧪 [ bin/check ] Running Minitest tests..."
+bundle exec rake test || { echo "❌ [ bin/check ] Tests failed"; exit 1; }
+
+# Run RuboCop (linter and style checker)
+echo "🤖 [ bin/check ] Running Rubocop..."
+bundle exec rubocop || { echo "❌ [ bin/check ] Rubocop failed"; exit 1; }
+
+echo "✅ [ bin/check ] Done."

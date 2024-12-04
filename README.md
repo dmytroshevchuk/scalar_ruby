@@ -5,6 +5,14 @@
 
 This gem simplifies the integration of [Scalar](https://scalar.com), a modern open-source developer experience platform for your APIs into Ruby applications.
 
+## Requirements
+
+This gem is tested and supported on the following Ruby versions:
+
+- Ruby 3.0, 3.1, 3.2, 3.3
+
+Other Ruby versions might work but are not officially supported.
+
 ## Installation
 
 Add the gem to your application's Gemfile by executing in the terminal:
@@ -14,6 +22,11 @@ bundle add scalar_ruby
 ```
 
 ## Getting Started
+
+#### Integrations
+You can use in-build generator to setup gem into [Ruby in Rails](https://rubyonrails.org) framework followed by instructions:
+
+Setup gem with [Ruby on Rails](lib/scalar/installers/rails/README.md)
 
 Statistically, you will likely use the gem for the Ruby on Rails application, so here are instructions on how to set up the Scalar for this framework. In the future, we'll add examples for other popular Ruby frameworks.
 
