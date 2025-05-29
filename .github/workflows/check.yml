@@ -8,10 +8,11 @@ on:
 
 jobs:
   Test-Ruby:
-    runs-on: ubuntu-latest
-
     strategy:
       matrix:
+        os:
+          - ubuntu-latest
+          - macos-latest
         ruby:
           - '3.0'
           - '3.1'
@@ -20,6 +21,7 @@ jobs:
           - '3.4'
 
     name: Ruby ${{ matrix.ruby }}
+    runs-on: ${{ matrix.os }}
 
     steps:
       - name: Check out repository code
@@ -27,9 +29,10 @@ jobs:
 
       - name: Install Ruby
         uses: ruby/setup-ruby@v1
+        env:
+          BUNDLE_WITH: development
         with:
           bundler-cache: true
-          bundler-with: development
           ruby-version: ${{ matrix.ruby }}
 
       - name: Debug Environment
