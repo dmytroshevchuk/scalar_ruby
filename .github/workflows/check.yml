@@ -38,7 +38,7 @@ jobs:
 
       - name: Install compatible Bundler for Ruby <= 2.7
         if: startsWith(matrix.ruby, '2')
-        run: gem install bundler -v '~> 2.4'
+        run: gem install bundler -v 2.4.22
 
       - name: Install compatible Bundler for Ruby >= 3.0
         if: startsWith(matrix.ruby, '3')
