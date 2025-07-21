@@ -36,6 +36,10 @@ jobs:
           bundler-cache: true
           ruby-version: ${{ matrix.ruby }}
 
+      - name: Install compatible Bundler for Ruby <= 2.7
+        if: startsWith(matrix.ruby, '2')
+        run: gem install bundler -v '~> 2.4'
+
       - name: Debug Environment
         run: |
           echo "Ruby version: $(ruby -v)"
