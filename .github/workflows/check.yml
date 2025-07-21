@@ -33,12 +33,16 @@ jobs:
         env:
           BUNDLE_WITH: development
         with:
-          bundler-cache: true
           ruby-version: ${{ matrix.ruby }}
+          bundler: none
 
       - name: Install compatible Bundler for Ruby <= 2.7
         if: startsWith(matrix.ruby, '2')
         run: gem install bundler -v '~> 2.4'
+
+      - name: Install compatible Bundler for Ruby >= 3.0
+        if: startsWith(matrix.ruby, '3')
+        run: gem install bundler
 
       - name: Debug Environment
         run: |
