@@ -82,9 +82,25 @@ The default configuration can be changed using the `Scalar.setup` method in `con
 # config/initializers/scalar.rb
 
 Scalar.setup do |config|
- config.page_title = 'My awesome API!'
+  config.page_title = 'My awesome API!'
 end
 ```
+
+There are two ways to pass the API specification.
+
+First, the `config.specification` setting. By default, it's blank. Pass the URL to the API specification or the content in OpenAPI format, and the value will be embedded into the `api-reference` script.
+
+Also, you can set the `config.specification` to `:demo`, and the `@scalar/galaxy` will be used as a specification. It may come in handy if you want to try out the library.
+
+```ruby
+# config/initializers/scalar.rb
+
+Scalar.setup do |config|
+  config.specification = :demo
+end
+```
+
+The second way is to pass the specification through the `config.scalar_configuration` setting. It's helpful if you want to specify multiple configurations or documents. See [Multiple Configurations guide](https://guides.scalar.com/scalar/scalar-api-references/configuration#openapi-documents__multiple-configurations "docs") for examples.
 
 Below, you’ll find a complete list of configuration settings:
 
@@ -93,7 +109,7 @@ Parameter                                  | Description                        
 `config.page_title`                        | Defines the page title displayed in the browser tab.    | API Reference
 `config.library_url`                       | Allows to set a specific version of Scalar. By default, it uses the latest version of Scalar, so users get the latest updates and bug fixes.   | https://cdn.jsdelivr.net/npm/@scalar/api-reference
 `config.scalar_configuration`              | Scalar has a rich set of configuration options if you want to change how it works and looks. A complete list of configuration options can be found [here](https://github.com/scalar/scalar/blob/main/documentation/configuration.md).   | {}
-`config.specification`                     | Allows users to pass their OpenAPI specification to Scalar. It can be a URL to specification or a string object in JSON or YAML format.    | https://cdn.jsdelivr.net/npm/@scalar/galaxy/dist/latest.yaml
+`config.specification`                     | Allows users to pass their OpenAPI specification to Scalar. It can be a URL to specification or a string object in JSON or YAML format.    | nil
 
 Example of setting configuration options:
 
@@ -101,7 +117,7 @@ Example of setting configuration options:
 # config/initializers/scalar.rb
 
 Scalar.setup do |config|
- config.scalar_configuration = { theme: 'purple' }
+  config.scalar_configuration = { theme: 'purple' }
 end
 ```
 

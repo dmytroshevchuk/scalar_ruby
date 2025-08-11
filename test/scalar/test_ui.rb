@@ -5,7 +5,8 @@ require 'test_helper'
 module Scalar
   class TestUI < Minitest::Test
     def setup
-      Scalar::Config.instance.set_defaults!
+      Scalar::Config.instance.set_defaults
+      Scalar::Config.instance.specification = :demo
 
       @status, @headers, @body = Scalar::UI.call({})
     end

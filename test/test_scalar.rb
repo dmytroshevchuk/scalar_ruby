@@ -6,15 +6,23 @@ class TestScalar < Minitest::Test
   def setup
     @config = Scalar::Config.instance
 
-    @config.set_defaults!
+    @config.set_defaults
   end
 
   def test_default_values
     assert_equal(Scalar::Config::DEFAULT_LIBRARY_URL, @config.library_url)
     assert_equal(Scalar::Config::DEFAULT_PAGE_TITLE, @config.page_title)
     assert_equal(Scalar::Config::DEFAULT_SCALAR_CONFIGURATION, @config.scalar_configuration)
-    assert_equal(Scalar::Config::DEFAULT_SPECIFICATION, @config.specification)
+    assert_nil(@config.specification)
   end
+
+  # def test_setting_demo_specification
+  #   assert_nil(@config.specification)
+
+  #   @config.set_demo_specification
+
+  #   assert_equal(Scalar::Config::DEMO_SPECIFICATION, @config.specification)
+  # end
 
   def test_setup_allows_to_change_config
     Scalar.setup do |config|

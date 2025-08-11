@@ -5,7 +5,7 @@ require 'test_helper'
 module Scalar
   class TestConfig < Minitest::Test
     def setup
-      Scalar::Config.instance.set_defaults!
+      Scalar::Config.instance.set_defaults
 
       @instance = Scalar::Config.instance
     end
@@ -41,11 +41,17 @@ module Scalar
     end
 
     def test_that_specification_accessor_is_available
-      assert_equal(Scalar::Config::DEFAULT_SPECIFICATION, @instance.specification)
+      assert_nil(@instance.specification)
 
       @instance.specification = 'https://scalar.io/api/reference'
 
       assert_equal('https://scalar.io/api/reference', @instance.specification)
+    end
+
+    def test_embedded_specification_returns_scalat_galaxy_specification_when_set_to_demo
+      @instance.specification = :demo
+
+      assert_equal(Scalar::Config::DEMO_SPECIFICATION, @instance.embedded_specification)
     end
   end
 end
