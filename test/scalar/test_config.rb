@@ -26,32 +26,24 @@ module Scalar
       assert_equal('API Documentation', @instance.page_title)
     end
 
-    def test_that_scalar_configuration_accessor_is_available
-      assert_equal(Scalar::Config::DEFAULT_SCALAR_CONFIGURATION, @instance.scalar_configuration)
+    def test_that_configuration_accessor_is_available
+      assert_equal(Scalar::Config::DEFAULT_CONFIGURATION, @instance.configuration)
 
-      @instance.scalar_configuration = { theme: 'purple' }
+      @instance.configuration = { theme: 'purple' }
 
-      assert_equal({ theme: 'purple' }, @instance.scalar_configuration)
+      assert_equal({ theme: 'purple' }, @instance.configuration)
     end
 
-    def test_scalar_configuration_to_json_returns_serialized_configuration
-      @instance.scalar_configuration = { theme: 'purple' }
+    def test_configuration_to_json_returns_serialized_configuration
+      @instance.configuration = { theme: 'purple' }
 
-      assert_equal('{"theme":"purple"}', @instance.scalar_configuration_to_json)
+      assert_equal('{"theme":"purple"}', @instance.configuration_to_json)
     end
 
-    def test_that_specification_accessor_is_available
-      assert_nil(@instance.specification)
+    def test_configuration_to_json_returns_demo_configuration_when_set_to_demo
+      @instance.configuration = :demo
 
-      @instance.specification = 'https://scalar.io/api/reference'
-
-      assert_equal('https://scalar.io/api/reference', @instance.specification)
-    end
-
-    def test_embedded_specification_returns_scalat_galaxy_specification_when_set_to_demo
-      @instance.specification = :demo
-
-      assert_equal(Scalar::Config::DEMO_SPECIFICATION, @instance.embedded_specification)
+      assert_equal(JSON.dump(Scalar::Config::DEMO_CONFIGURATION), @instance.configuration_to_json)
     end
   end
 end

@@ -5,8 +5,7 @@ require 'test_helper'
 module Scalar
   class TestUI < Minitest::Test
     def setup
-      Scalar::Config.instance.set_defaults
-      Scalar::Config.instance.specification = :demo
+      Scalar::Config.instance.configuration = :demo
 
       @status, @headers, @body = Scalar::UI.call({})
     end
@@ -34,14 +33,16 @@ module Scalar
           '  </head>',
           '',
           '  <body>',
-          '    <script',
-          '      id="api-reference"',
-          '      data-configuration={}',
-          '    >',
-          '      https://cdn.jsdelivr.net/npm/@scalar/galaxy/dist/latest.yaml',
-          '    </script>',
+          '    <div id="app"></div>',
           '',
           '    <script src="https://cdn.jsdelivr.net/npm/@scalar/api-reference"></script>',
+          '',
+          '    <script>',
+          '      Scalar.createApiReference(',
+          '        \'#app\',',
+          '        {"url":"https://cdn.jsdelivr.net/npm/@scalar/galaxy/dist/latest.yaml"}',
+          '      )',
+          '    </script>',
           '  </body>',
           '</html>'
         ],

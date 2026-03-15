@@ -2,6 +2,7 @@
 .tool-versions
 
 /.bundle/
+/.playground
 /.yardoc
 /_yardoc/
 /coverage/

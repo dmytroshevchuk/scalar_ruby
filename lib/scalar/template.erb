@@ -8,13 +8,15 @@
   </head>
 
   <body>
-    <script
-      id="api-reference"
-      data-configuration=<%= config.scalar_configuration_to_json %>
-    >
-      <%= config.embedded_specification %>
-    </script>
+    <div id="app"></div>
 
     <script src="<%= config.library_url %>"></script>
+
+    <script>
+      Scalar.createApiReference(
+        '#app',
+        <%= config.configuration_to_json %>
+      )
+    </script>
   </body>
 </html>
