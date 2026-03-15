@@ -9,15 +9,15 @@ Scalar.setup do |config|
   #
   # config.page_title = "API Reference"
 
-  # Pass your API specification. It may be :demo, a URL or file content in the
-  # OpenAPI format.
-  #
-  # config.specification = :demo
-
-  # Set additional Scalar configuration (e.g. theme, multiple specifications or,
+  # Set Scalar configuration (e.g. theme, single/multiple specifications or,
   # document sources, etc.)
   #
   # config.scalar_configuration = {
-  #   theme: "purple"
+  #   theme: "purple",
+  #   url: '...'
   # }
+  #
+  # To enable demo mode, uncomment the configuration below
+  #
+  # config.configuration = :demo
 end
