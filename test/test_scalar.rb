@@ -17,13 +17,13 @@ class TestScalar < Minitest::Test
 
   def test_setup_allows_to_change_config
     Scalar.setup do |config|
-      config.library_url = 'https://scalar.io/latest'
+      config.library_url = 'https://example.com/latest'
       config.page_title = 'Test API Reference'
-      config.configuration = { theme: 'purple', url: 'https://scalar.io/api/reference' }
+      config.configuration = { theme: 'purple', url: 'https://example.com/api/reference' }
     end
 
-    assert_equal('https://scalar.io/latest', @config.library_url)
+    assert_equal('https://example.com/latest', @config.library_url)
     assert_equal('Test API Reference', @config.page_title)
-    assert_equal({ theme: 'purple', url: 'https://scalar.io/api/reference' }, @config.configuration)
+    assert_equal({ theme: 'purple', url: 'https://example.com/api/reference' }, @config.configuration)
   end
 end

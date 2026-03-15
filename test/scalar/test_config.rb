@@ -13,9 +13,9 @@ module Scalar
     def test_that_library_url_accessor_is_available
       assert_equal(Scalar::Config::DEFAULT_LIBRARY_URL, @instance.library_url)
 
-      @instance.library_url = 'https://scalar.io/latest'
+      @instance.library_url = 'https://example.com/latest'
 
-      assert_equal('https://scalar.io/latest', @instance.library_url)
+      assert_equal('https://example.com/latest', @instance.library_url)
     end
 
     def test_that_page_title_accessor_is_available
