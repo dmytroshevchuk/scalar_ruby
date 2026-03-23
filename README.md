@@ -42,7 +42,7 @@ First, create an initializer, say `config/initializers/scalar.rb`. Then, set the
 # config/initializers/scalar.rb
 
 Scalar.setup do |config|
-  config.configuration = { url: "#{ActionMailer::Base.default_url_options[:host]}/openapi.json" }
+  config.configuration = { url: 'https://example.com/openapi.json' }
 end
 ```
 
