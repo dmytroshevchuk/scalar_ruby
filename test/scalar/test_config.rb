@@ -5,7 +5,7 @@ require 'test_helper'
 module Scalar
   class TestConfig < Minitest::Test
     def setup
-      Scalar::Config.instance.set_defaults!
+      Scalar::Config.instance.set_defaults
 
       @instance = Scalar::Config.instance
     end
@@ -13,9 +13,9 @@ module Scalar
     def test_that_library_url_accessor_is_available
       assert_equal(Scalar::Config::DEFAULT_LIBRARY_URL, @instance.library_url)
 
-      @instance.library_url = 'https://scalar.io/latest'
+      @instance.library_url = 'https://example.com/latest'
 
-      assert_equal('https://scalar.io/latest', @instance.library_url)
+      assert_equal('https://example.com/latest', @instance.library_url)
     end
 
     def test_that_page_title_accessor_is_available
@@ -26,26 +26,24 @@ module Scalar
       assert_equal('API Documentation', @instance.page_title)
     end
 
-    def test_that_scalar_configuration_accessor_is_available
-      assert_equal(Scalar::Config::DEFAULT_SCALAR_CONFIGURATION, @instance.scalar_configuration)
+    def test_that_configuration_accessor_is_available
+      assert_equal(Scalar::Config::DEFAULT_CONFIGURATION, @instance.configuration)
 
-      @instance.scalar_configuration = { theme: 'purple' }
+      @instance.configuration = { theme: 'purple' }
 
-      assert_equal({ theme: 'purple' }, @instance.scalar_configuration)
+      assert_equal({ theme: 'purple' }, @instance.configuration)
     end
 
-    def test_scalar_configuration_to_json_returns_serialized_configuration
-      @instance.scalar_configuration = { theme: 'purple' }
+    def test_configuration_to_json_returns_serialized_configuration
+      @instance.configuration = { theme: 'purple' }
 
-      assert_equal('{"theme":"purple"}', @instance.scalar_configuration_to_json)
+      assert_equal('{"theme":"purple"}', @instance.configuration_to_json)
     end
 
-    def test_that_specification_accessor_is_available
-      assert_equal(Scalar::Config::DEFAULT_SPECIFICATION, @instance.specification)
+    def test_configuration_to_json_returns_demo_configuration_when_set_to_demo
+      @instance.configuration = :demo
 
-      @instance.specification = 'https://scalar.io/api/reference'
-
-      assert_equal('https://scalar.io/api/reference', @instance.specification)
+      assert_equal(JSON.dump(Scalar::Config::DEMO_CONFIGURATION), @instance.configuration_to_json)
     end
   end
 end
