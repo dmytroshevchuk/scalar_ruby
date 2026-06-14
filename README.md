@@ -7,7 +7,7 @@ This gem simplifies the integration of [Scalar](https://scalar.com), a modern op
 
 ## Requirements
 
-This gem is tested and supported on the Ruby 2.7, 3.0, 3.1, 3.2, 3.3, and 3.4. Other Ruby versions might work but are not officially supported.
+This gem is tested and supported on the Ruby 2.7, 3.0, 3.1, 3.2, 3.3, 3.4, and 4.0. Other Ruby versions might work but are not officially supported.
 
 ## Installation
 
